@@ -1,0 +1,47 @@
+Executar Certbot con Docker en modo standalone
+
+
+*********************************
+ 
+mkdir letsencrypt
+
+docker run -it --rm --name certbot \
+            -v "/home/ubuntu/letsencrypt:/etc/letsencrypt" \
+            -p 80:80 \
+            certbot/certbot certonly    
+
+
+// Ejecutada por mi
+sudo docker run -it --rm --name certbot             
+                -v "/home/ubuntu/daw2223-apache2/etc_lets:/etc/letsencrypt"             
+                -v "/home/ubuntu/daw2223-apache2/lib_lets:/var/lib/letsencrypt"            
+                -p 80:80 
+                certbot/certbot certonly
+
+
+*********************************
+ 
+Executar Certbot con Docker en modo webroot
+Necesitas un servidor web funcionando
+supoñendo que o webroot está en /home/ubuntu/daw2223-apache2/startrek
+
+
+*********************************
+ 
+ docker run -it --rm --name certbot \
+            -v "/home/ubuntu/letsencrypt:/etc/letsencrypt" \
+            -v "/home/ubuntu/daw2223-apache2/startrek:/startrek" \        
+            certbot/certbot certonly --webroot -w /startrek
+
+//Ejecutada por mi (no moví las carpetas)
+docker run -it --rm --name certbot \
+            -v "/home/ubuntu/daw2223-apache2/etc_lets:/etc/letsencrypt" \
+            -v "/home/ubuntu/daw2223-apache2/startrek:/startrek" \        
+            certbot/certbot certonly --webroot -w /startrek
+
+*********************************
+ 
+Os certificados estarán dentro do cartafol letsencrypt que hai no home do teu usuario
+
+
+*********************************
