@@ -11,5 +11,6 @@ services:
       - ./palpatine:/app/palpatine
       - ./apache/startrek.conf:/etc/apache2/sites-enabled/startrek.conf
       - ./apache/starwars-ssl.conf:/etc/apache2/sites-enabled/starwars-ssl.conf
+      - ./apache/starwars.conf:/etc/apache2/sites-enabled/starwars.conf
       - ./apache/cert.pem:/etc/ssl/certs/cert.pem
       - ./apache/chave.key:/etc/ssl/private/chave.key
